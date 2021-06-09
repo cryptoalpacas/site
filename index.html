@@ -70,6 +70,12 @@
         </video>
 
         <div id="fullpage" class="fullpage-default">
+            
+            <div class="section animated-row" data-section="slide00">
+                <div class="section-inner">
+                    <div id="allalpaca" style="width: 100%; height: 550px;"></div>
+                </div>                
+            </div>
 
             <div class="section animated-row" data-section="slide01">
                 <div class="section-inner">
@@ -425,6 +431,7 @@
                 </div>
             </div>
 
+            
             <div class="section animated-row" data-section="slide07">
                 <div class="section-inner">
                     <div class="row justify-content-center">
@@ -499,6 +506,34 @@
 
     <script src="js/custom.js"></script>
 
+    <script src="lib/openseadragon/openseadragon.min.js"></script>
+    
+    <script type="text/javascript">
+        var duomo = {
+            Image: {
+                xmlns: "http://schemas.microsoft.com/deepzoom/2008",
+                Url: "lib/openseadragon/tiles/helloworld_files/",
+                Format: "png",
+                Overlap: "2",
+                TileSize: "256",
+                Size: {
+                Width:  "48000",
+                Height: "48000"
+                }
+            }
+        };
+        var viewer = OpenSeadragon({
+            id: "allalpaca",
+            prefixUrl: "lib/openseadragon/images/",
+            tileSources: duomo,
+            immediateRender: true,
+            maxZoomLevel: 17, // 18
+            minZoomLevel: 0,
+            defaultZoomLevel: 2,
+            smoothTileEdgesMinZoom: Infinity,
+            visibilityRatio: 1.0,
+        });
+    </script>
 
   </body>
 </html>

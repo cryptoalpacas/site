@@ -163,9 +163,15 @@
                 scrollOverflow: true,
                 responsiveWidth: 768,
                 responsiveHeight: 600,
-                responsiveSlides: true
+                responsiveSlides: true,                
             });
         }
+        $("#allalpaca").mouseenter(function() {
+            fullpage_api.setAutoScrolling(false)
+        });
+        $("#allalpaca").mouseleave(function() {
+            fullpage_api.setAutoScrolling(true)
+        });
         $(document).on('click', '.navbar-toggle', function() {
             $('.navbar-collapse').slideToggle(300);
             return false;
