@@ -36,7 +36,7 @@ var isMobile = false;
                 isMobile = true;                
             }
         }
-        console.log(isMobile);
+        
         $(window).on('load', function() {
             $('.preloader').fadeOut();
             $('.animated-row').each(function() {

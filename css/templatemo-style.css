@@ -363,7 +363,7 @@ a#logo {
 #social-icons {
   padding:0;
   position: fixed;
-  top: 30%;
+  top: 50%;
   transform: translateY(-50%);
   right:0;
   z-index: 199;
@@ -430,7 +430,7 @@ a#logo {
 .next-section {
   display: inline-block;
   position: absolute;
-  left: 50%;
+  left: 45%;
   transform: translateX(-50%);
   bottom: 30px;
   cursor: pointer;
@@ -851,4 +851,70 @@ textarea.form-control {
   height: 6px;
   background-color: #fff;
   border-radius: 3px;
+}
+.detail_overlay {
+  background-color: #000000;
+  opacity: 0.8;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.opensea {
+  width: 16px;
+  height: 16px;
+  background: url(images/opensea.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;            
+}
+.opensea:hover {
+  background: url(images/opensea_b.svg) no-repeat;
+}
+.counter-box > .type {
+  width: 40px;
+  height: 40px;
+  background: url(images/type.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+.counter-box > .chest {
+  width: 40px;
+  height: 40px;
+  background: url(images/chest.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+.counter-box > .eye {
+  width: 40px;
+  height: 40px;
+  background: url(images/eye.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+.counter-box > .mouse {
+  width: 40px;
+  height: 40px;
+  background: url(images/mouse.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+.counter-box > .head {
+  width: 40px;
+  height: 40px;
+  background: url(images/head.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+.counter-box > .ear {
+  width: 40px;
+  height: 40px;
+  background: url(images/ear.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+.counter-box > .back {
+  width: 40px;
+  height: 40px;
+  background: url(images/back.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
 }
