@@ -1,4 +1,5 @@
 ;
+var isMobile = false;
 (function($, window, document, undefined) {
     'use strict';
     var $winW = function() {
@@ -26,7 +27,16 @@
             }
         }
     };
+    
     $(document).ready(function() {
+        // 모바일 위주로 구별
+        var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'Windows CE;', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson', 'Mobile', 'Symbian', 'Opera Mobi', 'Opera Mini', 'IEmobile');
+        for (var word in mobileKeyWords) {
+            if (navigator.userAgent.match(mobileKeyWords[word]) != null) {
+                isMobile = true;                
+            }
+        }
+        console.log(isMobile);
         $(window).on('load', function() {
             $('.preloader').fadeOut();
             $('.animated-row').each(function() {
@@ -161,17 +171,19 @@
                 navigation: true,
                 navigationPosition: 'right',
                 scrollOverflow: true,
-                responsiveWidth: 768,
+                responsiveWidth: 768,   // 768
                 responsiveHeight: 600,
                 responsiveSlides: true,                
             });
         }
-        $("#allalpaca").mouseenter(function() {
-            fullpage_api.setAutoScrolling(false)
-        });
-        $("#allalpaca").mouseleave(function() {
-            fullpage_api.setAutoScrolling(true)
-        });
+        if(!isMobile) {
+            $("#allalpaca").mouseenter(function() {
+                fullpage_api.setAutoScrolling(false)
+            });
+            $("#allalpaca").mouseleave(function() {
+                fullpage_api.setAutoScrolling(true)
+            });
+        } 
         $(document).on('click', '.navbar-toggle', function() {
             $('.navbar-collapse').slideToggle(300);
             return false;
