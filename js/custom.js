@@ -183,6 +183,12 @@ var isMobile = false;
             $("#allalpaca").mouseleave(function() {
                 fullpage_api.setAutoScrolling(true)
             });
+            // $("#alpacaList").mouseenter(function() {
+            //     fullpage_api.setAutoScrolling(false)
+            // });
+            // $("#alpacaList").mouseleave(function() {
+            //     fullpage_api.setAutoScrolling(true)
+            // });
         } 
         $(document).on('click', '.navbar-toggle', function() {
             $('.navbar-collapse').slideToggle(300);

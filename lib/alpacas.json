@@ -1,0 +1,20 @@
+{
+    "data" : [
+        {
+            "num" : 1,
+            "name" : "CryptoAlpaca #1",
+            "type" : "Female",
+            "item_count" : 2,
+            "chest_color" :	"Gold",
+            "items" : ["Unicorn", "Glasses"]
+        },
+        {
+            "num" : 2,
+            "name" : "CryptoAlpaca #2",
+            "type" : "Male",
+            "item_count" : 3,
+            "chest_color" : "Gray",
+            "items" : ["Cap", "Flower",	"Glasses"]
+        }			
+    ]   
+}

@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta property="og:title" content="CryptoAlpacas" />
-    <meta property="og:image" content="https://cryptoalpacas.github.io/site/images/1040x1040.png" />
-    <meta property="og:description" content="bra bra~~" />
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:title" content="CryptoAlpacas" />
+        <meta property="og:image" content="https://cryptoalpacas.github.io/site/images/1040x1040.png" />
+        <meta property="og:description" content="bra bra~~" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="bra bra ~~~">
-    <meta name="author" content="CryptoAlpacas">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="bra bra ~~~">
+        <meta name="author" content="CryptoAlpacas">
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CryptoAlpacas">
-    <meta name="twitter:description" content="brabra~~~">
-    <meta name="twitter:image" content="https://cryptoalpacas.github.io/site/images/1040x1040.png">
-    
-    <link rel="shortcut icon" HREF="favicon.ico" />
-    
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="CryptoAlpacas">
+        <meta name="twitter:description" content="brabra~~~">
+        <meta name="twitter:image" content="https://cryptoalpacas.github.io/site/images/1040x1040.png">
+        
+        <link rel="shortcut icon" HREF="favicon.ico" />
+        
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <title>CryptoAlpacas - MMM project</title>
-    
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+        <title>CryptoAlpacas - MMM project</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
+        <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/templatemo-style.css">
+        <link rel="stylesheet" href="css/responsive.css">
 
     </head>
     
@@ -79,18 +79,18 @@
                         <span class="welcome-first animate" data-animate="fadeInUp">Hello, welcome to</span>
                         <h1 class="welcome-title animate" data-animate="fadeInUp">Crypto<br />Alpacas</h1>
                         <p class="animate" data-animate="fadeInUp">Bra~ Bra~ brabrabrabrabra bra~~~~~</p>
-                        <div class="scroll-down next-section animate" data-animate="fadeInUp">
+                        <!-- <div class="scroll-down next-section animate" data-animate="fadeInUp">
                             <img src="images/mouse-scroll.png" alt=""><span>Scroll Down</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
 
             <div class="section animated-row" data-section="slide02">
                 <div class="section-inner">
-                    <div class="welcome-box">
-                        <h3 class="animate" data-animate="fadeInUp">Find Alpaca!!</h3>                        
-                    </div>
+                    
+                    <h3 class="animate" data-animate="fadeInUp">Find Alpaca!!</h3>                        
+                    
                     <div id="allalpaca" style="width: 95%; height: 520px; display: inline-block;"></div>
                 </div>                
             </div>
@@ -157,7 +157,20 @@
                 </div>
             </div>
 
-
+            <div class="section animated-row" data-section="slide04">
+                <div class="section-inner slide">
+                    <div id="alpacaList" style="width:90%; height:600px;">
+                        
+                    </div>
+                </div>
+                <div class="section-inner slide">
+                    <div class="welcome-box">
+                        <span class="welcome-first animate" data-animate="fadeInUp">Hello, welcome to</span>
+                        <h1 class="welcome-title animate" data-animate="fadeInUp">Crypto<br />Alpacas</h1>
+                        <p class="animate" data-animate="fadeInUp">Bra~ Bra~ brabrabrabrabra bra~~~~~</p>                        
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -222,22 +235,24 @@
             var viewportPoint = viewer.viewport.pointFromPixel(webPoint);
             var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint);
             var zoom = viewer.viewport.getZoom();
-
+            
             viewer.removeOverlay("detail_overlay");
-
+            
             if (zoom >= 8) {
                 lastZoom = zoom;
                 var detailIndex = getDetail(viewportPoint.x, viewportPoint.y) + 1;
                 var elt = document.createElement("a");
                 elt.id = "detail_overlay";
-                elt.className = "detail_overlay";
+                elt.className = "detail_overlay_class";
                 elt.textContent = "#" + detailIndex;
-                elt.setAttribute('href', '/cryptopunks/details/' + detailIndex);
-                elt.setAttribute('target', '_blank');
+                //elt.setAttribute('href', '/details/' + detailIndex);
+                elt.setAttribute('href', 'javascript:alert("'+detailIndex+'")');
+                //elt.setAttribute('target', '_blank');
                 var ox = Math.floor(viewportPoint.x * 100) / 100 + 0.005;
                 var oy = Math.floor(viewportPoint.y * 100) / 100 + 0.0088;
                 viewer.addOverlay(elt, new OpenSeadragon.Point(ox, oy), OpenSeadragon.Placement.CENTER, null);
             }
+            
         });
 
         var getDetail = function(x, y) {
@@ -245,6 +260,52 @@
             y = Math.floor(y * 100);
             return (y * 100) + x;
         };
+
+        viewerInputHook = viewer.addViewerInputHook({hooks: [
+            {tracker: 'viewer', handler: 'clickHandler', hookHandler: onViewerClick}
+        ]});
+
+        function onViewerClick(event) {
+            var element = event.originalEvent.target;
+            if (element.tagName == "A") {
+                event.preventDefaultAction = true;
+                var rightClick = event.originalEvent.which != 1 || event.originalEvent.metaKey || event.originalEvent.shiftKey || event.originalEvent.ctrlKey;
+                if (typeof web3 !== 'undefined' && !rightClick) {
+                    location.href = element.getAttribute("href");
+                } else {
+                    location.href = element.getAttribute("href");
+                    //window.open(element.getAttribute("href"), '_blank');
+                }
+            }
+        }
+        $(document).ready(function(){
+            $.ajax({
+                dataType: "json",
+                url: "lib/alpacas.json",
+                mimeType: "application/json",
+                success: function(result){
+                    var tableData = "";
+                    console.log(result);
+                    $.each(result.data, function(index, d) {
+                        tableData += '<div class=\'owl-item\'>';
+                        tableData += '<span>'+d.name+'</span>';
+                        tableData += '<span>'+d.chest_color+'</span>';
+                        tableData += '<span>'+d.items+'</span>';
+                        tableData += '<span><a href="./#slide04/1/?num='+d.num+'"><img src=\'images/alpaca/'+d.num+'.png\' width=\'48\'/></a></span>';
+                        tableData += '</div>';
+                    });
+                    $("#alpacaList").append(tableData);
+                }
+            });
+            // $.ajax({
+            //     url:'lib/alpacas.json',
+            //     dataType:'json',
+            //     mimeType: "application/json",
+            //     success:function(data){
+            //         console.log(data);
+            //     }
+            // })
+        });
     </script>
 
   </body>
