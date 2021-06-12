@@ -507,4 +507,16 @@ $(document).ready(function(){
     $(".btn-ss").change(function() {
         searchAlpacas();
     });
+    // check parameter
+    var num = getParameterByName('num');
+    if(num != "") {
+        openAlpaca(num);
+    }
 });
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
