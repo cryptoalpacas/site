@@ -5,18 +5,18 @@
         <meta charset="utf-8">
         <meta property="og:title" content="CryptoAlpacas" />
         <meta property="og:image" content="https://cryptoalpacas.github.io/site/images/1040x1040.png" />
-        <meta property="og:description" content="bra bra~~" />
+        <meta property="og:description" content="10,000 unique Alpacas minted on the Ethereum blockchain with OpenSea." />
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="bra bra ~~~">
+        <meta name="description" content="10,000 unique Alpacas minted on the Ethereum blockchain with OpenSea.">
         <meta name="author" content="CryptoAlpacas">
 
         <meta name="twitter:card" content="summary">
         <meta name="twitter:title" content="CryptoAlpacas">
-        <meta name="twitter:description" content="brabra~~~">
+        <meta name="twitter:description" content="10,000 unique Alpacas minted on the Ethereum blockchain with OpenSea.">
         <meta name="twitter:image" content="https://cryptoalpacas.github.io/site/images/1040x1040.png">
         
-        <link rel="shortcut icon" HREF="favicon.ico" />
+        <link rel="shortcut icon" href="favicon.ico" />
         
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -30,6 +30,8 @@
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="css/templatemo-style.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/pagination.css">
+
 
     </head>
     
@@ -78,7 +80,12 @@
                     <div class="welcome-box">
                         <span class="welcome-first animate" data-animate="fadeInUp">Hello, welcome to</span>
                         <h1 class="welcome-title animate" data-animate="fadeInUp">Crypto<br />Alpacas</h1>
-                        <p class="animate" data-animate="fadeInUp">Bra~ Bra~ brabrabrabrabra bra~~~~~</p>
+                        <p class="animate" data-animate="fadeInUp">
+                            10,000 unique Alpacas minted on the Ethereum blockchain with OpenSea.
+                            A fixed set of 10,000 they were launched in June 2021.
+                            The Alpacas are generated using a Python script and minted as <a href="https://eips.ethereum.org/EIPS/eip-1155" target="_erc1155">ERC-1155 standard</a> NFTs on OpenSea.
+                            Homage to the OG <a href="https://www.bitbirds.io" target="_bitbirds">bitbirds</a>.(Chest color is a homage to <a href="https://www.bitbirds.io" target="_bitbirds">bitbirds</a>' beak color)
+                        </p>
                         <!-- <div class="scroll-down next-section animate" data-animate="fadeInUp">
                             <img src="images/mouse-scroll.png" alt=""><span>Scroll Down</span>
                         </div> -->
@@ -88,9 +95,7 @@
 
             <div class="section animated-row" data-section="slide02">
                 <div class="section-inner">
-                    
                     <h3 class="animate" data-animate="fadeInUp">Find Alpaca!!</h3>                        
-                    
                     <div id="allalpaca" style="width: 95%; height: 520px; display: inline-block;"></div>
                 </div>                
             </div>
@@ -106,7 +111,7 @@
                                             <div class="animate" data-animate="fadeInUp">
                                                 <span>Stats</span>
                                                 <h2>Type? Item?</h2>
-                                                <p>bra <strong>BRA!</strong>bra bra bra bra~~</p>
+                                                <p>Check it out in <a href="#slide04">All Alpaca</a></p>
                                             </div>
                                             <div class="facts-list owl-carousel">
                                                 <div class="item animate" data-animate="fadeInUp">
@@ -158,18 +163,75 @@
             </div>
 
             <div class="section animated-row" data-section="slide04">
-                <div class="section-inner slide">
-                    <div id="alpacaList" style="width:90%; height:600px;">
-                        
+                <div class="section-inner">
+                    <div class="about-section">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 wide-col-laptop">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <!-- <div class="about-contentbox"> -->
+                                        <div style="text-align:left;">
+                                            <div class="animate" data-animate="fadeInUp">
+                                                <div class="raleway filter btn-group-toggle" data-toggle="buttons" id="type">
+                                                    <h4 style="margin-bottom: 5px;">- Type</h4>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="male"><input type="checkbox" id="male" value="Male" class="type" />Male</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="female"><input type="checkbox" id="female" value="Female" class="type" />Female</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="maleStripe"><input type="checkbox" id="maleStripe" value="MaleStripe" class="type" />MaleStripe</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="femaleStripe"><input type="checkbox" id="femaleStripe" value="FemaleStripe" class="type" />FemaleStripe</label>
+                                                </div>
+                                                <div class="raleway filter btn-group-toggle" data-toggle="buttons" id="chest">
+                                                    <h4 style="margin-bottom: 5px;">- Chest Color</h4>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="gray"><input type="checkbox" id="gray" value="Gray" class="chest" />Gray</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="gold"><input type="checkbox" id="gold" value="Gold" class="chest" />Gold</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="red"><input type="checkbox" id="red" value="Red" class="chest" />Red</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="black"><input type="checkbox" id="black" value="Black" class="chest" />Black</label>
+                                                </div>
+                                                <div class="raleway filter btn-group-toggle" data-toggle="buttons" id="itemcount">
+                                                    <h4 style="margin-bottom: 5px;">- Item Count</h4>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="0"><input type="checkbox" id="0" value="0" />0</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="1"><input type="checkbox" id="1" value="1" />1</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="2"><input type="checkbox" id="2" value="2" />2</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="3"><input type="checkbox" id="3" value="3" />3</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="4"><input type="checkbox" id="4" value="4" />4</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="5"><input type="checkbox" id="5" value="5" />5</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="6"><input type="checkbox" id="6" value="6" />6</label>
+                                                </div>
+                                                <div class="raleway filter btn-group-toggle" data-toggle="buttons" id="item">
+                                                    <h4 style="margin-bottom: 5px;">- Item</h4>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="sunglasses"><input type="checkbox" id="sunglasses" value="Sunglasses" />Sunglasses</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="googgles"><input type="checkbox" id="googgles" value="Googgles" />googgles</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="glasses"><input type="checkbox" id="glasses" value="Glasses" />glasses</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="3Dglasses"><input type="checkbox" id="3Dglasses" value="3Dglasses" />3D glasses</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="snoop"><input type="checkbox" id="snoop" value="Snoop" />Snoop</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="mask"><input type="checkbox" id="mask" value="Mask" />Mask</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="flower"><input type="checkbox" id="flower" value="Flower" />Flower</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="tabaco"><input type="checkbox" id="tabaco" value="Tabaco" />Tabaco</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="cap"><input type="checkbox" id="cap" value="Cap" />Cap</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="knitted"><input type="checkbox" id="knitted" value="Knitted" />Knitted</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="tophat"><input type="checkbox" id="tophat" value="Tophat" />Top hat</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="unicorn"><input type="checkbox" id="unicorn" value="Unicorn" />Unicorn</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="ringleft"><input type="checkbox" id="ringleft" value="RingLeft" />RingLeft</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="ribbon"><input type="checkbox" id="ribbon" value="Ribbon" />Ribbon</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="ringright"><input type="checkbox" id="ringright" value="RingRight" />RingRight</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="dressing"><input type="checkbox" id="dressing" value="Dressing" />Dressing</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="angel"><input type="checkbox" id="angel" value="Angel" />Angel</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="devil"><input type="checkbox" id="devil" value="Devil" />Devil</label>
+                                                    <label class="btn btn-secondary btn-ss" style="line-height:5px"  for="fire"><input type="checkbox" id="fire" value="Fire" />Fire</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="filter"><span id="alpacaCount">0 Alpaca</span></div>
+                                        <div id="alpacaList" class="filter"></div>
+                                        <div id="pagination-container"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="section-inner slide">
-                    <div class="welcome-box">
-                        <span class="welcome-first animate" data-animate="fadeInUp">Hello, welcome to</span>
-                        <h1 class="welcome-title animate" data-animate="fadeInUp">Crypto<br />Alpacas</h1>
-                        <p class="animate" data-animate="fadeInUp">Bra~ Bra~ brabrabrabrabra bra~~~~~</p>                        
-                    </div>
-                </div>
+                
             </div>
 
         </div>
@@ -183,7 +245,32 @@
                 </ul>
             </div>
         </div>
-    </div>  
+    </div>
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" style="color:black;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">#-</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body" id="modalImg">
+                <a href="#" target="_opensea"><img src="images/alpaca/1.png"/></a>
+            </div>
+            <div class="modelData">Type - <span id="modalType">Male</span></div>
+            <div class="modelData">Chest Color - <span id="modalChest">Gold</span></div>
+            <div class="modelData">Item Count - <span id="modalItemCount">3</span></div>
+            <div class="modelData">Item - <span id="modalItem">Sunglasses, Cap, RingLeft, Angel</span></div>
+            <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button" id="btnBuy" class="btn btn-primary" style="color: black; background-color: white;">Buy</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -193,119 +280,12 @@
     <script src="js/jquery.inview.min.js"></script>
     <script src="js/form.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/pagination.min.js"></script>
     <script src="lib/openseadragon/openseadragon.min.js"></script>
     <script src="lib/openseadragon/openseadragon-canvas-overlay.js"></script>
     <script src="lib/openseadragon/viewerinputhook.js"></script>
     
     <script type="text/javascript">
-        var alpaca = {
-            Image: {
-                xmlns: "http://schemas.microsoft.com/deepzoom/2008",
-                Url: "lib/openseadragon/tiles/helloworld_files/",
-                Format: "png",
-                Overlap: "2",
-                TileSize: "256",
-                Size: {
-                Width:  "48000",
-                Height: "48000"
-                }
-            }
-        };
-        var viewer = OpenSeadragon({
-            id: "allalpaca",
-            prefixUrl: "lib/openseadragon/images/",
-            tileSources: alpaca,
-            immediateRender: true,
-            maxZoomLevel: 17, // 18
-            minZoomLevel: 0,
-            defaultZoomLevel: 2,
-            smoothTileEdgesMinZoom: Infinity,
-            visibilityRatio: 1.0,
-        });
-
-        var lastZoom = 1;
-        
-        viewer.addHandler('zoom', function(event) {
-            if (event.zoom < lastZoom) {
-                viewer.removeOverlay("detail_overlay");
-            }
-        });
-        viewer.addHandler('canvas-click', function(event) {
-            var webPoint = event.position;
-            var viewportPoint = viewer.viewport.pointFromPixel(webPoint);
-            var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint);
-            var zoom = viewer.viewport.getZoom();
-            
-            viewer.removeOverlay("detail_overlay");
-            
-            if (zoom >= 8) {
-                lastZoom = zoom;
-                var detailIndex = getDetail(viewportPoint.x, viewportPoint.y) + 1;
-                var elt = document.createElement("a");
-                elt.id = "detail_overlay";
-                elt.className = "detail_overlay_class";
-                elt.textContent = "#" + detailIndex;
-                //elt.setAttribute('href', '/details/' + detailIndex);
-                elt.setAttribute('href', 'javascript:alert("'+detailIndex+'")');
-                //elt.setAttribute('target', '_blank');
-                var ox = Math.floor(viewportPoint.x * 100) / 100 + 0.005;
-                var oy = Math.floor(viewportPoint.y * 100) / 100 + 0.0088;
-                viewer.addOverlay(elt, new OpenSeadragon.Point(ox, oy), OpenSeadragon.Placement.CENTER, null);
-            }
-            
-        });
-
-        var getDetail = function(x, y) {
-            x = Math.floor(x * 100);
-            y = Math.floor(y * 100);
-            return (y * 100) + x;
-        };
-
-        viewerInputHook = viewer.addViewerInputHook({hooks: [
-            {tracker: 'viewer', handler: 'clickHandler', hookHandler: onViewerClick}
-        ]});
-
-        function onViewerClick(event) {
-            var element = event.originalEvent.target;
-            if (element.tagName == "A") {
-                event.preventDefaultAction = true;
-                var rightClick = event.originalEvent.which != 1 || event.originalEvent.metaKey || event.originalEvent.shiftKey || event.originalEvent.ctrlKey;
-                if (typeof web3 !== 'undefined' && !rightClick) {
-                    location.href = element.getAttribute("href");
-                } else {
-                    location.href = element.getAttribute("href");
-                    //window.open(element.getAttribute("href"), '_blank');
-                }
-            }
-        }
-        $(document).ready(function(){
-            $.ajax({
-                dataType: "json",
-                url: "lib/alpacas.json",
-                mimeType: "application/json",
-                success: function(result){
-                    var tableData = "";
-                    console.log(result);
-                    $.each(result.data, function(index, d) {
-                        tableData += '<div class=\'owl-item\'>';
-                        tableData += '<span>'+d.name+'</span>';
-                        tableData += '<span>'+d.chest_color+'</span>';
-                        tableData += '<span>'+d.items+'</span>';
-                        tableData += '<span><a href="./#slide04/1/?num='+d.num+'"><img src=\'images/alpaca/'+d.num+'.png\' width=\'48\'/></a></span>';
-                        tableData += '</div>';
-                    });
-                    $("#alpacaList").append(tableData);
-                }
-            });
-            // $.ajax({
-            //     url:'lib/alpacas.json',
-            //     dataType:'json',
-            //     mimeType: "application/json",
-            //     success:function(data){
-            //         console.log(data);
-            //     }
-            // })
-        });
     </script>
 
   </body>

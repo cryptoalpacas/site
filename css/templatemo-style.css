@@ -363,7 +363,7 @@ a#logo {
 #social-icons {
   padding:0;
   position: fixed;
-  top: 30%;
+  top: 50%;
   transform: translateY(-30%);
   right:0;
   z-index: 199;
@@ -917,4 +917,44 @@ textarea.form-control {
   background: url(../images/back.svg) no-repeat;
   background-size: cover;
   display: inline-block;
+}
+.filter {
+  margin-bottom: 10px;
+  background-color:rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px;
+}
+.raleway {
+  font: 12px/1.2 'Raleway', Arial, Helvetica, sans-serif;
+  color: #fff;
+  /* background: #222; */
+}
+@media only screen and (max-width: 767px){
+  .btn-ss {
+    padding:0 25px;
+    line-height: 6px;
+    margin: 5px 0px 5px 0px;
+  }
+  .btn {
+    font-size: 0px;
+    line-height: 0px;
+    padding: 0px;
+  }
+}
+.btn-ss {
+  padding : 6px;
+  line-height: 6px;
+  margin: 5px 0px 5px 0px;
+}
+.modelData {
+  text-align: left;margin-left: 20px;
+}
+.modelData span {
+  color : red;
+}
+#alpacaList {
+  overflow-y: auto; text-align: left;
+}
+ul,li {
+  list-style-type: none;
 }

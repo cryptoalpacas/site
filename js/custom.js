@@ -165,7 +165,7 @@ var isMobile = false;
         if ($('.fullpage-default').length) {
             var myFullpage = new fullpage('.fullpage-default', {
                 licenseKey: ' C7F41B00-5E824594-9A5EFB99-B556A3D5',
-                anchors: ['slide01', 'slide02', 'slide03', 'slide04', 'slide05', 'slide06', 'slide07'],
+                anchors: ['slide01', 'slide02', 'slide03', 'slide04'],
                 menu: '#nav',
                 lazyLoad: true,
                 navigation: true,
@@ -224,3 +224,287 @@ var isMobile = false;
         });
     });
 })(jQuery, window, document);
+
+$(document).ready(function(){
+    var alpaca = {
+        Image: {
+            xmlns: "http://schemas.microsoft.com/deepzoom/2008",
+            Url: "lib/openseadragon/tiles/helloworld_files/",
+            Format: "png",
+            Overlap: "2",
+            TileSize: "256",
+            Size: {
+            Width:  "48000",
+            Height: "48000"
+            }
+        }
+    };
+    var viewer = OpenSeadragon({
+        id: "allalpaca",
+        prefixUrl: "lib/openseadragon/images/",
+        tileSources: alpaca,
+        immediateRender: true,
+        maxZoomLevel: 17, // 18
+        minZoomLevel: 0,
+        defaultZoomLevel: 2,
+        smoothTileEdgesMinZoom: Infinity,
+        visibilityRatio: 1.0,
+    });
+    var lastZoom = 1;
+
+    viewer.addHandler('zoom', function(event) {
+        if (event.zoom < lastZoom) {
+            viewer.removeOverlay("detail_overlay");
+        }
+    });
+    viewer.addHandler('canvas-click', function(event) {
+        var webPoint = event.position;
+        var viewportPoint = viewer.viewport.pointFromPixel(webPoint);
+        var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint);
+        var zoom = viewer.viewport.getZoom();
+        
+        viewer.removeOverlay("detail_overlay");
+        
+        if (zoom >= 8) {
+            lastZoom = zoom;
+            var detailIndex = getDetail(viewportPoint.x, viewportPoint.y) + 1;
+            var elt = document.createElement("a");
+            elt.id = "detail_overlay";
+            elt.className = "detail_overlay_class";
+            elt.textContent = "#" + detailIndex;
+            //elt.setAttribute('href', '/details/' + detailIndex);
+            elt.setAttribute('href', 'javascript:openAlpaca("'+detailIndex+'")');
+            //elt.setAttribute('target', '_blank');
+            var ox = Math.floor(viewportPoint.x * 100) / 100 + 0.005;
+            var oy = Math.floor(viewportPoint.y * 100) / 100 + 0.0088;
+            viewer.addOverlay(elt, new OpenSeadragon.Point(ox, oy), OpenSeadragon.Placement.CENTER, null);
+        }
+    });
+
+    var getDetail = function(x, y) {
+        x = Math.floor(x * 100);
+        y = Math.floor(y * 100);
+        return (y * 100) + x;
+    };
+
+    viewerInputHook = viewer.addViewerInputHook({hooks: [
+        {tracker: 'viewer', handler: 'clickHandler', hookHandler: onViewerClick}
+    ]});
+
+    function onViewerClick(event) {
+        var element = event.originalEvent.target;
+        if (element.tagName == "A") {
+            event.preventDefaultAction = true;
+            var rightClick = event.originalEvent.which != 1 || event.originalEvent.metaKey || event.originalEvent.shiftKey || event.originalEvent.ctrlKey;
+            if (typeof web3 !== 'undefined' && !rightClick) {
+                location.href = element.getAttribute("href");
+            } else {
+                location.href = element.getAttribute("href");
+                //window.open(element.getAttribute("href"), '_blank');
+            }
+        }
+    }
+
+});
+
+
+
+function numFilter(obj) {
+    if(tmpParam.num === undefined) {
+        return true;
+    }
+    if('num' in obj && obj.num == tmpParam.num) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function typeFilter(obj) {
+    if(('types' in param) == false || param.types.length === 0) {
+        return true;
+    }
+    if('type' in obj && param.types.includes(obj.type)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function itemFilter(obj) {
+    if(('items' in param) == false || param.items.length === 0) {
+        return true;
+    }
+
+    if(obj.items.filter(it => param.items.includes(it)).length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function chestFilter(obj) {
+    if(('chests' in param) == false || param.chests.length === 0) {
+        return true;
+    }
+    if('chest_color' in obj && param.chests.includes(obj.chest_color)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function itemCountFilter(obj) {
+    if(('itemCounts' in param) == false || param.itemCounts.length === 0) {
+        return true;
+    }
+    if('item_count' in obj && param.itemCounts.includes(obj.item_count)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+var param = {
+    // "num" : 1,
+    // "types" : ["Male", "Female"],
+    // "chests" : ["Gold" ,"Gray"],
+    // "itemCounts" : [2],
+    // "items" : ["Unicorn", "Cap", "Flower"]
+};
+var tmpParam = {};
+var newJson = [];
+
+function openAlpaca(alpacaNum) {
+    tmpParam = {
+        "num" : alpacaNum
+    }
+    // getAlpaca
+    $.ajax({
+        async : false,
+        dataType: "json",
+        url: "lib/alpacas.json",
+        mimeType: "application/json",
+        success: function(result){
+            if(result.data != null) {
+                // 1. num
+                newJson = result.data.filter(numFilter);
+            }
+        }
+    });
+    // model data innerHtml
+    $.each(newJson, function(index, d) {
+        $("#modalLabel").html(d.name);
+        $("#modalType").html(d.type);
+        $("#modalChest").html(d.chest_color);
+        $("#modalItemCount").html(d.item_count);
+        $("#modalItem").html(d.items.join(", "));
+        
+        if(d.link==""){
+            $("#modalImg").html("<a href=\"#\" onclick=\"alert('coming soon~');return false;\" target=\"_opensea\"><img src=\"images/alpaca/"+d.num+".png\" width=\"240\"/></a>");
+            $("#btnBuy").attr("onclick", "alert('coming soon~')");
+        } else {
+            $("#modalImg").html("<a href=\""+d.link+"\" target=\"_opensea\"><img src=\"images/alpaca/"+d.num+".png\" width=\"240\"/></a>");
+            $("#btnBuy").attr("onclick", "window.open('"+d.link+"','_opensea')");
+        }
+        
+    });
+    $("#exampleModal").modal();            
+}
+function searchAlpacas() {
+    param = {};
+
+    types = [];
+    chests = [];
+    itemCounts = [];
+    items = [];
+    
+    $("#alpacaCount").html("0");
+    $("#alpacaList").html("");
+
+    $("#type input:checkbox").each(function(index, i){
+        if($(this).is(":checked")){
+            types.push($(this).val())
+        }
+    });
+    $("#chest input:checkbox").each(function(index, i){
+        if($(this).is(":checked")){
+            chests.push($(this).val())
+        }
+    });
+    $("#itemcount input:checkbox").each(function(index, i){
+        if($(this).is(":checked")){
+            itemCounts.push($(this).val())
+        }
+    });
+    $("#item input:checkbox").each(function(index, i){
+        if($(this).is(":checked")){
+            items.push($(this).val())
+        }
+    });
+
+    if(types.length != 0) param.types = types;
+    if(chests.length != 0) param.chests = chests;
+    if(itemCounts.length != 0) param.itemCounts = itemCounts;
+    if(items.length != 0) param.items = items;
+
+    $.ajax({
+        dataType: "json",
+        url: "lib/alpacas.json",
+        mimeType: "application/json",
+        success: function(result){
+            if(result.data != null) {
+                newJson = result.data;
+                
+                // 2. type
+                newJson = newJson.filter(typeFilter);
+                // 3. item
+                newJson = newJson.filter(itemFilter);
+                // 4. chest
+                newJson = newJson.filter(chestFilter);
+                // 5. itemCount
+                newJson = newJson.filter(itemCountFilter);
+                
+                var dataSource = [];
+                $.each(newJson, function(index, d) {
+                    dataSource.push(d.num);
+                });
+
+                $('#pagination-container').pagination({
+                    dataSource : dataSource,
+                    pageSize: 25,
+                    showPageNumbers: false,
+                    showNavigator: true,
+                    callback: function(data, pagination) {
+                        var html = simpleTemplating(data);
+                        $('#alpacaList').html(html);
+                    }
+                })
+
+                // var tableData = "<div class=\"raleway\">";
+                // $.each(newJson, function(index, d) {
+                //     tableData += "<a href=\"#\" onclick=\"openAlpaca('" + d.num + "');return false;\"><img src=\"images/alpaca/"+d.num+".png\" width=\"100\"/>";
+                // });
+                // tableData += "</div>";
+
+                //$("#alpacaList").append(tableData);
+                
+                alpacaCount = newJson.length;
+                $("#alpacaCount").html(alpacaCount > 1 ? alpacaCount + " Alpacas" : alpacaCount + " Alpaca");
+            }
+        }
+    });
+}
+
+function simpleTemplating(data) {
+    var html = '<div class=\"raleway\">';
+    $.each(data, function(index, item){
+        html += '<a href="#" onclick="openAlpaca(\'' + item + '\');return false;"><img src="images/alpaca/'+item+'.png" width="100"/>';
+    });
+    html += '</div>';
+    return html;
+}
+
+
+$(document).ready(function(){
+    searchAlpacas();
+    $(".btn-ss").change(function() {
+        searchAlpacas();
+    });
+});
